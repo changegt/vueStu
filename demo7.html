@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试v-once</title>
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<script type="text/javascript" src="./js/axios.js"></script>
+	<script type="text/javascript" src="./js/zepto.js"></script>
+</head>
+<body>
+	<div class="result">结论：组件内使用v-once的时候，当v-once的渲染的数据对象改变后，该结构不在变化</div>
+	<hr>
+	<div class="wap-container">
+		<my-tpl :msg="msg"></my-tpl>
+	</div>
+
+	<template id="tpl">
+		<div>hello {{msg}}</div>
+	</template>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			Vue.component('my-tpl',{
+				template:'#tpl',
+				props: ['msg'],
+				data: function(){
+					return {
+					};
+				},
+				methods: {
+
+				}
+			});
+
+			vm = new Vue({
+				el: '.wap-container',
+				data: {
+					msg: 'vue1'
+				},
+				methods: {
+
+				}
+			})
+		});
+	</script>
+</body>
+</html>

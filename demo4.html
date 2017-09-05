@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>vue组件学习</title>
+	<script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+
+	<h3 style="text-align: center;">当前demo是学习vue的组件</h3>
+	<div id="box">
+		<one-tpl all-msg="vue"></one-tpl>
+	</div>
+
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#box',
+			components: {
+				'one-tpl': {
+					props: ['allMsg'],
+					template: '<div>hello {{allMsg}}</div>'
+				}
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试vuex</title>
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<script type="text/javascript" src="./js/vuex.js"></script>
+	<script type="text/javascript" src="./js/zepto.js"></script>
+</head>
+<body>
+	<div class="result">探索vuex状态管理的学习</div>
+	<hr>
+	<div class="wap-container">
+		<button @click="add1">add1</button>
+		<button @click="add2">add2</button><br>
+		<span>{{count}}</span> + <counter></counter> = {{sum}}
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var store = new Vuex.Store({
+				state: {
+					count1 : 0,
+					count2 : 0
+				},
+				mutations: {
+					add1: function(state){
+						state.count1++;
+					},
+					add2: function(state){
+						state.count2++;
+					}
+				},
+				getters: {
+					sum: function(state){
+						return state.count1 + state.count2;
+					}
+				}
+			});
+
+			Vue.component('counter',{
+				template: '<span>{{count}}</span>',
+				computed: {
+					count(){
+						return this.$store.state.count2;
+					}
+				}
+			})
+
+			var vm = new Vue({
+				el: '.wap-container',
+				store,
+				computed: {
+					count(){
+						return this.$store.state.count1;
+					},
+					sum(){
+						return this.$store.getters.sum;
+					}
+				},
+				methods: {
+					add1(){
+						this.$store.commit('add1');
+					},
+					add2(){
+						this.$store.commit('add2');
+					}
+				}
+			})
+		});
+	</script>
+</body>
+</html>

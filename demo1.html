@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-9">
+	<title>vue 学习 demo1</title>
+	<script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+
+	<style type="text/css">
+		.green{
+			color: green;
+		}
+		.red{
+			color: red;
+		}
+		code{
+			display: block;
+			background: #ccc;
+			color: #444;
+			line-height: 32px;
+			text-indent: 10px;
+			font-size: 16px;
+			font-weight: bold;
+			margin: 10px 0;
+		}
+	</style>
+
+	<h3 style="text-align: center;">当前demo是学习vue的所有模板语法</h3>
+	<div id="box">
+		<label for="">{{title}}</label>
+		<div class="list-wrap" v-for="list in lists" style="margin: 30px; ">
+			<label for="">{{list.desc}}</label>
+			<div class="list-body" v-if="list.type === 0" style="margin: 10px 30px;">
+				<code>
+					&lt; input type="text" v-model="list.textMsg" &gt;
+					<br>
+				</code>
+				<input type="text" v-model="list.textMsg">
+				<p>{{list.textMsg}}</p>
+			</div>
+
+			<div class="list-body" v-else-if="list.type === 1" style="margin: 10px 30px;">
+				<code>
+					{{list.content}}
+				</code>
+				<p v-html="list.content"></p>
+			</div>
+
+			<div class="list-body" v-else-if="list.type === 2" style="margin: 10px 30px;">
+
+				<code>
+					<p>&lt; div <span class="red">v-bind:class="list.color"</span> style="margin-bottom: 10px;" &gt;</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;hello vue ,当前的class为 { { list.color } }</p>
+					<p>&lt; /div &gt;</p>
+				</code>
+
+				<div v-bind:class="list.color" style="margin-bottom: 10px;">
+					hello vue ,当前的class为 {{list.color}}
+				</div>
+				<button @click="list.color = 'green'">green</button>
+				<button @click="list.color = 'red'">red</button>
+			</div>
+
+			<div class="list-body" v-else-if="list.type === 3" style="margin: 10px 30px;">
+				<label><input type="radio" value="green" name="radio" @click="list.color = 'green'">green</label>
+				<label><input type="radio" value="red" name="radio" @click="list.color = 'red'">red</label>
+				<p>{{list.color}}</p>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var setValData = {
+			title: '插值',
+			lists: [
+				{
+					type: 0,
+					desc : '纯文本【text】',
+					content: 'hello vue',
+					textMsg: '默认'
+				},
+				{
+					type: 1,
+					desc : '纯HTML【html】',
+					content: '<div style="color: red;">hello red vue</div>'
+				},
+				{
+					type: 2,
+					desc : '属性【element】',
+					color: 'green'
+				},
+				{
+					type: 3,
+					desc : 'js表达式【js】',
+					color: 'green'
+				}
+			]
+		};
+
+		var vm = new Vue({
+			el: '#box',
+			data: setValData
+		});
+	</script>
+</body>
+</html>

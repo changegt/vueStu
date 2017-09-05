@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+
+	<div id="box">
+		<list-tpl></list-tpl>
+	</div>
+
+	<template id="tpl">
+		<div v-if="lists.length">2312</div>
+		<div v-if="lists.length">2312</div>
+			<!-- <div v-for="list in lists">
+				{{list}}
+			</div> -->
+	</template>
+
+	<script type="text/javascript">
+		new Vue({
+			el: '#box',
+			data: {
+
+			},
+			components: {
+				'list-tpl': {
+					template: '#tpl',
+					data: function(){
+						return {
+							lists: [1,2,3]
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

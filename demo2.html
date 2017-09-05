@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-9">
+	<title>vue 学习 demo2</title>
+	<script type="text/javascript" src="./js/vue.js"></script>
+</head>
+<body>
+
+<style type="text/css">
+	pre{
+		display: block;
+		background: #ccc;
+		color: #444;
+		font-size: 16px;
+		line-height: 20px;
+		font-weight: bold;
+		margin: 10px 0;
+	}
+</style>
+
+<h3 style="text-align: center;">当前demo是学习vue的计算属性</h3>
+<div id="box">
+	{{allMsg}}
+</div>
+
+<pre>
+<p>计算属性一般是依赖某个数据进行某些计算后得到的数据，当依赖的数据发生改变的时候，计算属性会自动去计算同时更新</p>
+<div style="color: red;">
+	{ {allMsg} }
+</div>
+<div>
+var vm = new Vue({
+	el: '#box',
+	data: {
+		msg1: 'hello',
+		msg2: 'vue'
+	},
+	computed: {
+		<span style="color: red;">allMsg: function() {
+			return this.msg1+' '+this.msg2;
+		}</span>
+	}
+});
+</div>
+</pre>
+
+<script type="text/javascript">
+	var vm = new Vue({
+		el: '#box',
+		data: {
+			msg1: 'hello',
+			msg2: 'vue'
+		},
+		computed: {
+			allMsg: function() {
+				return this.msg1+' '+this.msg2;
+			}
+		}
+	});
+</script>
+
+<hr>
+<div id="box2">
+	<label for="">你的名字: {{fullname}}</label>
+	姓：<input type="text" placeholder="姓" v-model="xing">
+	名：<input type="text" placeholder="名" v-model="ming">
+	姓名：<input type="text" placeholder="姓名" v-model="fullname">
+</div>
+
+<script type="text/javascript">
+	var vm = new Vue({
+		el: '#box2',
+		data: {
+			xing: '',
+			ming: ''
+		},
+		computed: {
+			fullname: {
+				get: function(){
+					return this.xing+' '+this.ming;
+				},
+				set: function(val){
+					var arr = val.replace(/(^\s*)|(\s*$)/g, "").split(' ');
+					if(arr.length == 1){
+						this.xing = arr[0];
+					}else if(arr.length == 2){
+						this.xing = arr[0];
+						this.ming = arr[1];
+					}else{}
+				}
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

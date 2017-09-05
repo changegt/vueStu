@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>demo</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=0">
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<script type="text/javascript" src="./js/zepto.js"></script>
+	<script type="text/javascript" src="http://s.thsi.cn/cb?js/ta_https.min.20161221.js;;sns/js/core/Ta/ta-plus-1.0.0.js"></script>
+	<script type="text/javascript" src="http://s.thsi.cn/sns/sea-modules/circle/wapcircle/1.1.0/common-8b709e.js"></script>
+	<link rel="stylesheet" href="http://s.thsi.cn/cb?sns/css/circle/wapcircle/1.1.0/;common-907560.css;btn-cab8b6.css">
+	<style>
+		html,body{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+		}
+		.myadshow{
+			display: none!important;
+		}
+		.wap-container{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+		.video-box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 2.2rem;
+			background: #444;
+		}
+		.chat-box{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			padding-top: 2.2rem;
+		}
+		.chat-box .video-bar{ 
+			position: relative;
+			width: 100%;
+			height: 0.35rem;
+			background: red;
+		}
+		.chat-box .adviser-info{
+			position: relative;
+			width: 100%;
+			height: 0.75rem;
+			background: blue;
+		}
+		.chat-box .chat-room{
+
+		}
+		.chat-box .bottom-bar{
+			width: 100%;
+			height: 0.35rem;
+			position: absolute;
+			bottom: 0;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="wap-container">
+		<!--顶部视频位置-->
+		<div class="video-box"></div>
+		
+		<!-- 聊天模块 -->
+		<div class="chat-box por cloumnflex">
+			<div class="video-bar"></div>
+			<div class="adviser-info"></div>
+			<div class="chat-room flex1"></div>
+			<div class="bottom-bar"></div>
+		</div>
+
+		<!-- 列表模块 -->
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			initFontSize();
+		});
+	</script>
+</body>
+</html>
